@@ -20,6 +20,7 @@ jobs:
         java-version: '17'
 
     - name: 3. 赋予 gradlew 执行权限
+      working-directory: ./XeldCashier
       run: chmod +x gradlew
 
     - name: 4. 编译生成 APK (Debug 测试版)
