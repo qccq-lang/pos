@@ -25,27 +25,28 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        
+        // 1. JitPack 仓库
         maven { url "https://jitpack.io" }
         
-        // 1. 阿里云镜像源 (解决大部分第三方依赖和旧版 JCenter 缺失问题)
+        // 2. 蒲公英 Pgyer 官方仓库（解决 com.pgyer:analytics 下载）
+        maven { url "https://frontjs-static.pgyer.com/dist/sdk/pgyersdk" }
+        maven { url "https://raw.githubusercontent.com/Pgyer/analytics/master" }
+
+        // 3. 个推 Getui 仓库 (必须用 http 协议 + allowInsecureProtocol，避免 SSL 证书报错)
+        maven { 
+            url "http://mvn.gt.getui.com/nexus/content/repositories/releases/"
+            allowInsecureProtocol = true
+        }
+
+        // 4. 阿里云镜像 & JCenter 镜像
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        
-        // 2. JCenter 备用节点 (解决 com.sunmi 商米 SDK 下载)
         maven { 
             url 'https://jcenter.bintray.com'
             allowInsecureProtocol = true
         }
-        
-        // 3. 个推 SDK 仓库 (已修复 https 及 allowInsecureProtocol)
-        maven {
-            url "https://mvn.gt.getui.com/nexus/content/repositories/releases/"
-            allowInsecureProtocol = true
-        }
-        
-        // 4. 蒲公英 SDK 仓库
-        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
     }
 }
 
