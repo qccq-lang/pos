@@ -24,6 +24,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: 4. 编译生成 APK (Debug 测试版)
+      working-directory: ./XeldCashier
       run: ./gradlew assembleDebug
 
     - name: 5. 上传生成的 APK 文件
